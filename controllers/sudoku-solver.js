@@ -1,8 +1,6 @@
 class SudokuSolver {
   hasDuplicateStrings(obj) {
-    console.log("LET'S SEE WHAT'S COMING IN HERE BABY!!: ", obj);
     let anyDuplicates = false;
-
     for (const property in obj) {
       let arr = obj[property];
       const seen = {};
@@ -287,11 +285,9 @@ class SudokuSolver {
       return true;
     }
     sodokoSolver(_board);
-    // console.log(_board);
     // Credit to mojtaba ramezani on Stack Overflow for the solution to how
     // to make a sudoku solver. I have worked this out previously independently,
     // but am using this 'backtracking' approach here for convenience.
-    console.log(_board.flat().join(""));
     let result = _board.flat().join("");
     const areas = this.defineRowsColumnsRegions(result);
     const hasDuplicatesInRows = this.hasDuplicateStrings(areas.rows);
@@ -304,7 +300,6 @@ class SudokuSolver {
       hasDuplicatesInColumns ||
       hasDuplicatesInRegions
     ) {
-      console.log("GOT HERE, and HAS DUPLICATES!!!!!!!!");
       return { error: "puzzle could not be solved" };
     }
     return result;

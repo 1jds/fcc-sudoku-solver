@@ -6,7 +6,6 @@ module.exports = function (app) {
   let solver = new SudokuSolver();
 
   app.route("/api/check").post((req, res) => {
-    console.log("Here's the big test!!!!!!!!! ", req.body);
     const puzzle = req.body.puzzle;
     const coordinate = req.body.coordinate;
     const value = req.body.value;
@@ -32,7 +31,6 @@ module.exports = function (app) {
     } else if (errorCheck === 2) {
       return res.json({ error: "Invalid characters in puzzle" });
     }
-    console.log("Executed up to here...");
 
     let row = coordinate[0];
     let column = coordinate[1];
@@ -75,7 +73,6 @@ module.exports = function (app) {
       return res.json({ error: "Invalid characters in puzzle" });
     }
     const solution = solver.solve(puzzle);
-    console.log("HERE IS WHAT THE SOLUTION LOOKS LIKE: ", solution);
     if (solution.error) {
       return res.json({ error: "Puzzle cannot be solved" });
     }
